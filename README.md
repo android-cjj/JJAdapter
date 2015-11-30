@@ -11,7 +11,7 @@ rv的出现，不代表lv就要消失，就算消失，也没那么快，对吧�
 
 for listView
 ------------------------------------------------------------
-(1)继承 JJBaseAdapter<J,T> ,其中 泛型 J 代表 model的类型， T 代表 ViewHolder
+(1)继承 JJBaseAdapter<J,T> ,其中 泛型 J 代表 model的类型， T 代表 ViewHolder, adapter 构造函数中传入需要的数据，onBindData是数据回调，可以在这里做逻辑处理。
 
 eg:
 
@@ -41,6 +41,86 @@ public class MyBaseAdapter extends JJBaseAdapter<String,MyViewHolder> {
     }
 }
 ```
+
+(2)MyViewHolder 就是我们平常写的ViewHoler 
+
+eg:
+```java
+/**
+ * 注意 tv_text 需要和xml的 id 一样
+ * 其它控件的id都是这条规则 （the same）
+ */
+public class MyViewHolder{
+    public TextView tv_text;
+}
+```
+(3)listView.setAdapter(new MyBaseAdapter),这样就可以了，是不是很简单，啊哈哈。
+
+
+for RecyclerView
+--------------------------------------------------------
+(1)(1)继承 JJRvAdapter<J,T> ,其中 泛型 J 代表 model的类型， T 代表 ViewHolder, adapter 构造函数中传入需要的数据，onBindData是数据回调，可以在这里做逻辑处理。
+```java
+public class MyRvAdapter extends JJRvAdapter<String,MyViewHolder> {
+
+    public MyRvAdapter(List<String> list) {
+        super(list, R.layout.item_list, MyViewHolder.class);
+    }
+
+    @Override
+    public void onBindData(final int pos, MyViewHolder holder, String item) {
+        holder.tv_text.setText(item);
+        holder.tv_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(),String.valueOf(pos),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        holder.tv_text.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                removeData(pos);
+                return false;
+            }
+        });
+    }
+}
+```
+(2)(3)和listView的使用一样，其实，如果你认真看rv(1)的使用只是和listView的继承JJBaseAdapter这个地方不一样而已，它继承JJRvAdapter 。
+
+你没看错，现在你就不用担心老项目中lv,gv什么的了，都可以用这种简单的adapter,啊哈哈。。。。
+
+注意：
+---------------------------------------------------
+MyViewHolder中的成员变量的名字需要和item xml中id 的 名字相同
+
+其他：
+```java
+public interface DataHandler<J> {
+
+    public void updateData(List<J> list);
+
+    public void updateData(J[] array);
+
+    public void removeData(int pos);
+
+    public void removeData(J item);
+
+    public void addData(List<J> list);
+
+    public void addData(J[] arrays);
+
+    public void addData(J item);
+
+}
+```
+看名字就知道 adapter有这些数据操作的功能，如果不够，自己看源码修改吧。
+
+
+
+
+
 
 
 
