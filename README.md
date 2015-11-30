@@ -124,7 +124,7 @@ If you want to support me,you can follow me on GitHub:
 
 缺点：
 ===========================
-就是xml id 要一样，不支持多type...一大堆啊 ，所以，请尽量pull request 吧 ，它还是个小孩。。。。。
+就是不支持注解，不支持多type...一大堆啊 ，所以，请尽量pull request 吧 ，它还是个小孩。。。。。后续改进...这个主要从公司的项目代码中分离出来修修改改而来的 
 
 
 License
