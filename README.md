@@ -59,7 +59,7 @@ public class MyViewHolder{
 
 for RecyclerView
 --------------------------------------------------------
-(1)(1)继承 JJRvAdapter<J,T> ,其中 泛型 J 代表 model的类型， T 代表 ViewHolder, adapter 构造函数中传入需要的数据，onBindData是数据回调，可以在这里做逻辑处理。
+(1)继承 JJRvAdapter<J,T> ,其中 泛型 J 代表 model的类型， T 代表 ViewHolder, adapter 构造函数中传入需要的数据，onBindData是数据回调，可以在这里做逻辑处理。
 ```java
 public class MyRvAdapter extends JJRvAdapter<String,MyViewHolder> {
 
@@ -87,7 +87,7 @@ public class MyRvAdapter extends JJRvAdapter<String,MyViewHolder> {
     }
 }
 ```
-(2)(3)和listView的使用一样，其实，如果你认真看rv(1)的使用只是和listView的继承JJBaseAdapter这个地方不一样而已，它继承JJRvAdapter 。
+接下来和listView的使用一样，其实，如果你认真看rv(1)的使用只是和listView的继承JJBaseAdapter这个地方不一样而已，它继承JJRvAdapter 。
 
 你没看错，现在你就不用担心老项目中lv,gv什么的了，都可以用这种简单的adapter,啊哈哈。。。。
 
@@ -96,6 +96,7 @@ public class MyRvAdapter extends JJRvAdapter<String,MyViewHolder> {
 MyViewHolder中的成员变量的名字需要和item xml中id 的 名字相同
 
 其他：
+-------------------------------------------------------
 ```java
 public interface DataHandler<J> {
 
@@ -116,6 +117,37 @@ public interface DataHandler<J> {
 }
 ```
 看名字就知道 adapter有这些数据操作的功能，如果不够，自己看源码修改吧。
+
+
+If you want to support me,you can follow me on GitHub:
+[https://github.com/android-cjj](https://github.com/android-cjj).
+
+
+License
+=======
+
+    The MIT License (MIT)
+
+	Copyright (c) 2015 android-cjj
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
 
 
 
