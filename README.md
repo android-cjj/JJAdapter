@@ -122,6 +122,10 @@ public interface DataHandler<J> {
 If you want to support me,you can follow me on GitHub:
 [https://github.com/android-cjj](https://github.com/android-cjj).
 
+缺点：
+===========================
+就是xml id 要一样，不支持多type...一大堆啊 ，所以，请尽量pull request 吧 ，它还是个小孩。。。。。
+
 
 License
 =======
